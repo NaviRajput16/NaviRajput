@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ececec;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            margin-top: 15px;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .container {
+            padding: 40px 60px;
+            background: url(https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+            display: flex;
+            align-items: center;
+            border: 5px splid rgba(190, 190, 190, 0);
+            box-shadow: 0 0 15px rgba(100, 100, 100, 0);
+            flex-direction: column;
+        }
+
+        .input {
+            padding: 12px 20px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 0;
+            /* background-image: radial-gradient(circle, #6da0ed 25%, #9aed68 62%); */
+            background: url(https://images.pexels.com/photos/816608/pexels-photo-816608.jpeg?auto=compress&cs=tinysrgb&w=600);
+            border-radius: 50px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        #qr-image {
+            display: none;
+        }
+
+        img {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" id="text" placeholder="Enter text..." class="input" />
+
+        <button type="button" onclick="generateQR()">
+            Generate QR
+        </button>
+        <div id="qr-image">
+            <span class="error"></span><br />
+            <img src="" id="img" alt="" />
+        </div>
+    </div>
+
+    <script>
+        function generateQR() {
+            document.querySelector("#qr-image").style.display = "block";
+            let QRtext = document.querySelector("#text").value; // Removed unnecessary dot before value
+            if (QRtext.trim().length == 0) {
+                document.querySelector("#qr-image .error").innerHTML = "Please enter text";
+                document.querySelector("#img").style.display = "none";
+            } else {
+                document.querySelector("#img").style.display = "block";
+                document.querySelector("#qr-image .error").innerHTML = "";
+                document.querySelector("#img").src = "https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=" + QRtext; // Corrected typo in the URL
+            }
+        }
+
+    </script>
+</body>
+
+</html>
