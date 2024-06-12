@@ -11,7 +11,6 @@
 
 - 📫 How to reach me **naviraj1609@gmail.com**
 
-- ⚡ Fun fact **I am a hyperrealism artist 😁**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
